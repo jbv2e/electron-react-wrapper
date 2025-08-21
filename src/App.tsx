@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/electron-vite.animate.svg'
 import './App.css'
 
+import { Button } from '@/components/ui/button'
+import CustomButton from './components/CustomButton'
+
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div className="dark:bg-gray-900 flex items-center justify-center gap-2">
-        <a href="https://electron-vite.github.io" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="text-cyan-200">Vite + React1</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='bg-background text-foreground min-h-screen p-6'>
+      test;;
+      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
+      <CustomButton variant='black' size={'md'} label={'Try Again'}></CustomButton>
+      <CustomButton test={'red'} size={'md'} label={'장바구니'} text-style={'aa'}></CustomButton>
+      {/* <Button variant={'blue'} size={'wlg'} label={'회원가입'}></Button> */}
+      <button className='text-white bg-amber-300'>Primary Button</button>
+      <Button className='active:scale-95 transition-transform flex flex-wrap items-center gap-2 md:flex-row bg-blue-200'>
+        Click me
+      </Button>
+    </div>
   )
 }
 
