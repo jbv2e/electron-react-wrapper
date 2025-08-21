@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  electron-app:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
