@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
+      onload="this.rel='stylesheet'" rel="stylesheet" />
+    <title>Stitch Design</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style type="text/tailwindcss">
+      :root {
+        --primary-color: #38e07b;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-splineSans text-gray-900">
+    <div class="relative flex size-full min-h-screen flex-col">
+      <div class="flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 px-10 py-3">
+          <div class="flex items-center gap-3 text-gray-900">
+            <div class="size-6 text-[var(--primary-color)]">
+              <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_319)">
+                  <path
+                    d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                    fill="currentColor"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_319">
+                    <rect fill="white" height="48" width="48"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold leading-tight tracking-tight">Acme Co</h2>
+          </div>
+          <div class="flex items-center gap-6">
+            <nav class="hidden md:flex items-center gap-6">
+              <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">Overview</a>
+              <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">Documentation</a>
+              <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">Components</a>
+              <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">Examples</a>
+              <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">Themes</a>
+              <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">GitHub</a>
+            </nav>
+            <div class="flex items-center gap-4">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-9 px-4 bg-gray-100 text-gray-900 text-sm font-semibold leading-normal hover:bg-gray-200">
+                <span class="truncate">Login</span>
+              </button>
+              <button class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzd6TORT47xrV9J7l6PAvqEO_EEmqDtSVY2yNrMhbR9ooqDiEK1oqUPBBt5hHh0CgS1sZVEGOUzsltmzrDMSkaWL8On6DQGCHmN00SA9MZ5FRV4ipTkk6_dyPUJY1llJ2iz6Jn1oDLubdHGCi8KQekE9r7OBj16e33Di5ueGfcrd1nwN6Mg9EuMvGvef45M2Thj6SIHelH7AAPydZOcDEaate7nUru0y6lYRscGqS8Es1zpuSN2S6FbGBhUvnNjinBVX_eTw01FCI");'></button>
+            </div>
+          </div>
+        </header>
+        <main class="flex-1 px-4 py-8 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl">
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <h1 class="text-3xl font-bold tracking-tight">Create a new project</h1>
+                <p class="text-gray-500">Fill in the details below to create your new project.</p>
+              </div>
+              <div class="space-y-6">
+                <div class="space-y-2">
+                  <label class="text-sm font-medium leading-none" for="project-name">Project Name</label>
+                  <input
+                    class="flex h-10 w-full rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-color)]"
+                    id="project-name" placeholder="e.g. Acme Inc. homepage" value="" />
+                </div>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none" for="framework">Framework</label>
+                    <div class="relative">
+                      <select
+                        class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="framework">
+                        <option disabled="" selected="" value="">Select a framework</option>
+                        <option value="nextjs">Next.js</option>
+                        <option value="react">React</option>
+                        <option value="vue">Vue</option>
+                        <option value="svelte">Svelte</option>
+                      </select>
+                      <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none" for="database">Database</label>
+                    <div class="relative">
+                      <select
+                        class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="database">
+                        <option disabled="" selected="" value="">Select a database</option>
+                        <option value="postgresql">PostgreSQL</option>
+                        <option value="mysql">MySQL</option>
+                        <option value="mongodb">MongoDB</option>
+                        <option value="sqlite">SQLite</option>
+                      </select>
+                      <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none" for="authentication">Authentication</label>
+                    <div class="relative">
+                      <select
+                        class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="authentication">
+                        <option disabled="" selected="" value="">Select authentication</option>
+                        <option value="auth0">Auth0</option>
+                        <option value="clerk">Clerk</option>
+                        <option value="nextauth">NextAuth.js</option>
+                        <option value="none">None</option>
+                      </select>
+                      <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none" for="orm">ORM</label>
+                    <div class="relative">
+                      <select
+                        class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="orm">
+                        <option disabled="" selected="" value="">Select an ORM</option>
+                        <option value="prisma">Prisma</option>
+                        <option value="drizzle">Drizzle</option>
+                        <option value="typeorm">TypeORM</option>
+                        <option value="none">None</option>
+                      </select>
+                      <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none" for="components">Components</label>
+                    <div class="relative">
+                      <select
+                        class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="components">
+                        <option disabled="" selected="" value="">Select components</option>
+                        <option value="shadcn">Shadcn UI</option>
+                        <option value="radix">Radix UI</option>
+                        <option value="headless">Headless UI</option>
+                        <option value="custom">Custom</option>
+                      </select>
+                      <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none" for="styling">Styling</label>
+                    <div class="relative">
+                      <select
+                        class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="styling">
+                        <option disabled="" selected="" value="">Select styling</option>
+                        <option value="tailwind">Tailwind CSS</option>
+                        <option value="css-modules">CSS Modules</option>
+                        <option value="styled-components">Styled Components</option>
+                        <option value="emotion">Emotion</option>
+                      </select>
+                      <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label class="text-sm font-medium leading-none" for="deployment">Deployment</label>
+                  <div class="relative">
+                    <select
+                      class="flex h-10 w-full appearance-none items-center justify-between rounded-md border border-gray-200 bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      id="deployment">
+                      <option disabled="" selected="" value="">Select a deployment platform</option>
+                      <option value="vercel">Vercel</option>
+                      <option value="netlify">Netlify</option>
+                      <option value="aws">AWS</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <span
+                      class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+                  </div>
+                </div>
+                <div class="flex justify-end pt-4">
+                  <button
+                    class="inline-flex h-10 items-center justify-center rounded-md bg-[var(--primary-color)] px-6 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:bg-opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                    Create Project
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+  </body>
+</html>
