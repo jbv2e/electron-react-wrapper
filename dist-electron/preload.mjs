@@ -20,3 +20,9 @@ electron.contextBridge.exposeInMainWorld("ipcRenderer", {
   // You can expose other APTs you need here.
   // ...
 });
+electron.contextBridge.exposeInMainWorld("electronAPI", {
+  getLocalIPs: () => electron.ipcRenderer.invoke("get-local-ips"),
+  // getAllInterfaces: () => ipcRenderer.invoke('get-all-interfaces'),
+  // Main Process로 SOAP 호출 요청을 보낼 함수를 노출
+  callSoapService: (data) => electron.ipcRenderer.invoke("call-soap-service", data)
+});

@@ -23,7 +23,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "sourceMap": true,
+    "outDir": "dist"
   },
   "include": ["src", "electron"],
   "references": [{ "path": "./tsconfig.node.json" }]

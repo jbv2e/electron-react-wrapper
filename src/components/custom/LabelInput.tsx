@@ -27,24 +27,36 @@ export const LabelInputVariants = cva(
 
 // Extend InputHTMLAttributes to accept all standard input props, but omit 'size' to avoid conflict
 export interface LabelInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'>,
     VariantProps<typeof LabelInputVariants> {
   label: string // Make label a required prop
   containerClassName?: string // Optional class for the container
+  labelClassName?: string // Optional class for the label
+  inputClassName?: string // Optional class for the input element
+  onChange?: (value: string) => void // onChange handler that returns the input value
 }
 
 const LabelInput = React.forwardRef<HTMLInputElement, LabelInputProps>(
-  ({ className, containerClassName, variant, size, label, id, ...props }, ref) => {
+  ({ labelClassName, inputClassName, containerClassName, onChange, variant, size, label, id, ...props }, ref) => {
     const generatedId = React.useId()
     // Ensure id is present for accessibility, use the generated one if not provided
     const inputId = id || generatedId
 
     return (
       <div className={cn(LabelInputVariants({ variant, size }), containerClassName)}>
-        <label className='text-sm font-medium leading-none' htmlFor={inputId}>
+        <label className={cn('font-medium leading-none whitespace-nowrap', labelClassName)} htmlFor={inputId}>
           {label}
         </label>
-        <Input id={inputId} className={cn('w-full  focus-visible:ring-offset-0', className)} ref={ref} {...props} />
+        <Input
+          id={inputId}
+          className={cn(
+            'flex-1  focus-visible:ring-offset-0 placeholder:text-muted-foreground/70 h-8 text-xs',
+            inputClassName,
+          )}
+          ref={ref}
+          onChange={(e) => onChange?.(e.target.value)}
+          {...props}
+        />
       </div>
     )
   },

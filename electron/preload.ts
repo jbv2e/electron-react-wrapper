@@ -1,4 +1,4 @@
-import { ipcRenderer, contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 
 // --------- Expose some API to the Renderer process ---------
 contextBridge.exposeInMainWorld('ipcRenderer', {
@@ -21,4 +21,11 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 
   // You can expose other APTs you need here.
   // ...
+})
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  getLocalIPs: () => ipcRenderer.invoke('get-local-ips'),
+  // getAllInterfaces: () => ipcRenderer.invoke('get-all-interfaces'),
+  // Main Process로 SOAP 호출 요청을 보낼 함수를 노출
+  callSoapService: (data: unknown) => ipcRenderer.invoke('call-soap-service', data),
 })

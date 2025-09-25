@@ -1,53 +1,69 @@
 import './App.css'
 
-import { Copy } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+// import { Profiler } from 'react'
+
+// import { Profiler } from 'react'
+
+// import { Copy } from 'lucide-react'
+// import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import CustomButton from './components/CustomButton'
-import Wrapper from './pages/Wrapper'
+import CodeSearch from './pages/office/CodeSearch'
+// import CustomButton from './components/CustomButton'
+import WrapperMain from './pages/wrapper/WrapperMain'
 
 const tabs = [
   {
-    name: 'pnpm',
-    value: 'pnpm',
-    content: 'pnpm dlx shadcn@latest add tabs',
+    name: 'Wrapper',
+    value: 'wrapper',
   },
   {
-    name: 'npm',
-    value: 'npm',
-    content: 'npx shadcn@latest add tabs',
+    name: 'Code',
+    value: 'Code',
   },
   {
     name: 'yarn',
     value: 'yarn',
-    content: 'npx shadcn@latest add tabs',
   },
   {
     name: 'bun',
     value: 'bun',
-    content: 'bunx --bun shadcn@latest add tabs',
   },
 ]
 
 function App() {
   // const [count, setCount] = useState(0)
 
+  // const onRenderCallback = (id: string, phase: string, actualDuration: number) => {
+  //   console.log({ id, phase, actualDuration })
+  // }
+
   return (
-    <div className='bg-background text-foreground p-1'>
-      <Tabs defaultValue={tabs[0].value} className='w-full bg-white'>
-        <TabsList className='p-0 h-auto  gap-1'>
+    <div className='bg-background text-foreground p-1 h-screen flex flex-col'>
+      <Tabs defaultValue={tabs[0].value} className='w-full h-auto bg-white  '>
+        <TabsList className='p-0 h-auto  gap-1  bg-white border-b border-gray-200 '>
           {tabs.map((tab) => (
             <TabsTrigger
               key={tab.value}
               value={tab.value}
-              className='data-[state=active]:bg-primary data-[state=active]:text-primary-foreground'
+              className='data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-bold h-auto px-3 py-2 text-sm hover:bg-primary/10'
             >
               <code className='text-[13px]'>{tab.name}</code>
             </TabsTrigger>
           ))}
         </TabsList>
-        <TabsContent value='pnpm'>
-          <Wrapper></Wrapper>
+        <TabsContent value='wrapper' className='flex h-auto '>
+          {/* <Profiler id='wrapper' onRender={onRenderCallback}> */}
+          <WrapperMain></WrapperMain>
+          {/* </Profiler> */}
+        </TabsContent>
+        <TabsContent value='Code'>
+          <CodeSearch></CodeSearch>
+        </TabsContent>
+        <TabsContent value='yarn'>
+          <div className='flex h-auto bg-white '>yarn</div>
+        </TabsContent>
+        <TabsContent value='bun'>
+          <div className='flex h-auto bg-white '>bun</div>
         </TabsContent>
 
         {/* {tabs.map((tab) => (
@@ -61,19 +77,19 @@ function App() {
           </TabsContent>
         ))} */}
       </Tabs>
-
+      {/* 
       <div className='bg-background text-foreground min-h-screen p-6'>
         <h1 className='text-3xl font-bold tracking-tight'>Create a new project</h1>
         test;;22
         <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
         <CustomButton variant='black' size={'md'} label={'Try Again'}></CustomButton>
         <CustomButton test={'red'} size={'md'} label={'장바구니'} text-style={'aa'}></CustomButton>
-        {/* <Button variant={'blue'} size={'wlg'} label={'회원가입'}></Button> */}
+        <Button variant={'blue'} size={'wlg'} label={'회원가입'}></Button> 
         <button className='text-white bg-amber-300'>Primary Button</button>
         <Button className='active:scale-95 transition-transform flex flex-wrap items-center gap-2 md:flex-row bg-blue-200'>
           Click me
         </Button>
-      </div>
+      </div> */}
     </div>
   )
 }
