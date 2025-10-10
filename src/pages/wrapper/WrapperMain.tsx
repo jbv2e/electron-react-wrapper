@@ -73,15 +73,6 @@ const functionCodeOptions = [
 //   { id: 'INIT', label: 'INIT' },
 // ]
 
-declare global {
-  interface Window {
-    electronAPI: {
-      getLocalIPs: () => Promise<string>
-      // getAllInterfaces: () => Promise<any[]>
-      callSoapService: (data: unknown) => Promise<{ NumberToWordsResult: string }>
-    }
-  }
-}
 const useRenderCount = (componentName: string) => {
   const renderCount = useRef(0)
 

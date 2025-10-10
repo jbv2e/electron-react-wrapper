@@ -9,3 +9,21 @@
   },
   "include": ["vite.config.ts"]
 }
+
+
+// {
+//   "compilerOptions": {
+//     "target": "ES2022",
+//     "module": "ESNext",
+//     "moduleResolution": "bundler",
+//     "strict": true,
+//     "isolatedModules": true,
+//     "types": ["node"],
+//    "noEmit": false,          // emit 허용
+//    "outDir": "dist-electron",
+//    "composite": true         // references 필수 조건
+//     // (선택) 선언만 뽑고 싶으면:
+//     // "declaration": true, "emitDeclarationOnly": true
+//   },
+//   "include": ["electron"]
+// }

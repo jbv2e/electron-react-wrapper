@@ -9,7 +9,9 @@ import './App.css'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import CodeSearch from './pages/office/CodeSearch'
 // import CustomButton from './components/CustomButton'
+import SubPageTest from './pages/subs/SubPageTest'
 import WrapperMain from './pages/wrapper/WrapperMain'
+import { Toaster } from './components/ui/sonner'
 
 const tabs = [
   {
@@ -21,8 +23,8 @@ const tabs = [
     value: 'Code',
   },
   {
-    name: 'yarn',
-    value: 'yarn',
+    name: 'Test',
+    value: 'Test',
   },
   {
     name: 'bun',
@@ -39,7 +41,7 @@ function App() {
 
   return (
     <div className='bg-background text-foreground p-1 h-screen flex flex-col'>
-      <Tabs defaultValue={tabs[0].value} className='w-full h-auto bg-white  '>
+      <Tabs defaultValue={tabs[0].value} className='flex w-full h-full bg-white  '>
         <TabsList className='p-0 h-auto  gap-1  bg-white border-b border-gray-200 '>
           {tabs.map((tab) => (
             <TabsTrigger
@@ -56,11 +58,15 @@ function App() {
           <WrapperMain></WrapperMain>
           {/* </Profiler> */}
         </TabsContent>
-        <TabsContent value='Code'>
-          <CodeSearch></CodeSearch>
+        <TabsContent value='Code' asChild>
+          <div>
+            <CodeSearch></CodeSearch>
+            </div>
         </TabsContent>
-        <TabsContent value='yarn'>
-          <div className='flex h-auto bg-white '>yarn</div>
+        <TabsContent value='Test' asChild>
+          <div className='flex flex-col border-b '>
+            <SubPageTest className=' '></SubPageTest>
+          </div>
         </TabsContent>
         <TabsContent value='bun'>
           <div className='flex h-auto bg-white '>bun</div>
@@ -90,6 +96,18 @@ function App() {
           Click me
         </Button>
       </div> */}
+
+      <Toaster richColors position="top-right"  />
+      {/* <Toaster
+        toastOptions={{
+          classNames: {
+            toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+            description: 'group-[.toast]:text-muted-foreground',
+            actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
+            cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
+          },
+        }}
+/> */}
     </div>
   )
 }

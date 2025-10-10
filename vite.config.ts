@@ -3,12 +3,15 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import electron from 'vite-plugin-electron/simple'
+import tsconfigPaths from "vite-tsconfig-paths"
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
+    tsconfigPaths(),
     electron({
       main: {
         // Shortcut of `build.lib.entry`.
@@ -45,10 +48,12 @@ export default defineConfig({
             undefined
           : {},
     }),
+    
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      // "#app": path.resolve(__dirname, "src")
     },
   },
 })

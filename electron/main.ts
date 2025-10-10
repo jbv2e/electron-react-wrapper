@@ -1,10 +1,13 @@
 import path from 'node:path'
 // import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
-import { app, BrowserWindow, ipcMain } from 'electron'
-import { createClientAsync } from 'soap'
+import { app, BrowserWindow } from 'electron'
+// import { createClientAsync } from 'soap'
 import { registerIpcHandlers } from './services'
-import { getLocalIPs } from './utils'
+import { installContextMenu } from './contextMenu'
+
+
+// import { getLocalIPs } from './utils'
 
 // const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -54,6 +57,9 @@ function createWindow() {
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
+      contextIsolation: true,
+      nodeIntegration: false,
+      spellcheck: false,
     },
     minWidth: 300,
     minHeight: 400,
@@ -72,6 +78,9 @@ function createWindow() {
     // win.loadFile('dist/index.html')
     win.loadFile(path.join(RENDERER_DIST, 'index.html'))
   }
+
+  // context 메뉴 추가
+  // installContextMenu(win)
 
   win.setMenu(null) // Remove menu bar
 

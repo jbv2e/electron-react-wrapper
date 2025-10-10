@@ -5,6 +5,8 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "resolvePackageJsonImports": true, // ← 명시(에디터 인식 안정)
+
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -20,13 +22,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    /* Vite와 함께 사용하기 위한 경로 매핑 */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
     "sourceMap": true,
-    "outDir": "dist"
+    // "outDir": "dist"
   },
-  "include": ["src", "electron"],
+  "include": ["src","electron"],
   "references": [{ "path": "./tsconfig.node.json" }]
+  // "include": ["src"],
+  // "references": [{ "path": "./tsconfig.node.json" }]
 }
