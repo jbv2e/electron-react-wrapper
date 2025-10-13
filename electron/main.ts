@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { app, BrowserWindow } from 'electron'
 // import { createClientAsync } from 'soap'
 import { registerIpcHandlers } from './services'
-import { installContextMenu } from './contextMenu'
+// import { installContextMenu } from './contextMenu'
 
 
 // import { getLocalIPs } from './utils'

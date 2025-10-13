@@ -29,4 +29,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Main Process로 SOAP 호출 요청을 보낼 함수를 노출
   callSoapService: (data: unknown) => ipcRenderer.invoke('call-soap-service', data),
   getJsonData: (filepath: string) => ipcRenderer.invoke('get-json-data', filepath),
+  getDomains: () => ipcRenderer.invoke('get-domains'),
 })

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { AutoComplete, AutoCompleteDataItem } from '@/components/custom/AutoComplete'
 import { cn } from '@/lib/utils'

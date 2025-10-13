@@ -8,6 +8,7 @@ declare global {
       // getAllInterfaces: () => Promise<any[]>
       callSoapService: (data: unknown) => Promise<{ NumberToWordsResult: string }>
       getJsonData: (configName: string) => Promise<JSON>
+      getDomains: () => Promise<Record<string, string>>
     },
     // ipcRenderer: {
     //   on(

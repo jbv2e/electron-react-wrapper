@@ -10,7 +10,7 @@ import LabelSelect from '@/components/custom/LabelSelect'
 // import { TextareaAutosize } from '@/components/custom/TextAreaAutosize'
 import { Button } from '@/components/ui/button'
 import { formatDate } from '@/lib/utils'
-
+import { toast } from 'sonner'
 // import WrapperHeader from './WrapperHeader'
 
 // import { Textarea } from '@/components/ui/textarea'
@@ -20,12 +20,12 @@ import { formatDate } from '@/lib/utils'
 // import { Input } from '@/components/ui/input'
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
-const targetEnvDefaultOptions = [
-  { value: 'LOCAL', label: 'Local' },
-  { value: 'AIT', label: 'AIT' },
-  { value: 'SIT', label: 'SIT' },
-  { value: 'PROD', label: 'PROD' },
-]
+// const targetEnvDefaultOptions = [
+//   { value: 'LOCAL', label: 'Local' },
+//   { value: 'AIT', label: 'AIT' },
+//   { value: 'SIT', label: 'SIT' },
+//   { value: 'PROD', label: 'PROD' },
+// ]
 
 const autoFunctionOptions = [
   { value: 'A', label: 'A' },
@@ -112,7 +112,7 @@ const WrapperMain = () => {
   const [IFProcessDt, setIFProcessDt] = useState('')
 
   const [orderDetail, setOrderDetail] = useState('')
-
+  const [wrapperQuery, setWrapperQuery] = useState<JSON>(JSON)
   const headerLayout = useRef<HTMLDivElement>(null)
   const mainLayout = useRef<HTMLDivElement>(null)
   const [footerHeight, setFooterHeight] = useState(0)
@@ -196,6 +196,24 @@ const WrapperMain = () => {
     // setOrderDetail('')
   }, [])
 
+  // wrapper 조회 쿼리 복사
+  const onClickQueryCopy = useCallback(() => {
+    // wrapperQuery 클립 보드에 복사
+    if (!wrapperQuery) return
+
+    let result = ''
+    Object.values(wrapperQuery).forEach((value) => {
+      if (typeof value === 'string') {
+        result += value
+        result += '\n\n'
+      }
+    })
+
+    navigator.clipboard.writeText(result) // JSON.stringify( wrapperQuery.)
+    // // toast 메시지
+    toast.success(' 복사되었습니다!', { duration: 1000, position: "bottom-center" })
+  }, [wrapperQuery])
+
   // functionCode 버튼 클릭 이벤트
   // const onClickFunctionCode = useCallback((id: string) => {
   //   if (id === 'ORCN') {
@@ -236,28 +254,68 @@ const WrapperMain = () => {
   useEffect(() => {
     // console.log('footerHeight updated:', footerHeight)
 
-    window.electronAPI?.getLocalIPs().then((ips) => {
-      // console.log('Local IPs:', ips)
-      // setTargetDomain(ips.length > 0 ? ips[0] : '')
-      console.log('ips:', ips)
+    window.electronAPI?.getDomains().then((domains) => {
+      // console.log(domains)
 
-      const fetchDomain = () => {
-        const localIp = ips.length > 0 ? ips[0] : ''
-        const newOptions = targetEnvDefaultOptions.map((item) => {
-          if (item.label === 'Local') {
-            return { label: 'Local', value: localIp }
-          }
-          return item
-        })
-        setTargetEnvOptions(newOptions)
+      // const localIp = ips.length > 0 ? ips[0] : ''
+      //   const newOptions = targetEnvDefaultOptions.map((item) => {
+      //     if (item.label === 'Local') {
+      //       return { label: 'Local', value: localIp }
+      //     }
+      //     return item
+      //   })
+      if (!domains) return
+      const envOptions = Object.keys(domains).map((key) => {
+        return { label: key, value: domains[key] }
+      })
+        setTargetEnvOptions(envOptions) 
         setTargetEnv('SIT')
 
         onChangeTargetEnv('SIT')
-      }
-
-      fetchDomain()
     })
+    // window.electronAPI?.getLocalIPs().then((ips) => {
+    //   // console.log('Local IPs:', ips)
+    //   // setTargetDomain(ips.length > 0 ? ips[0] : '')
+    //   console.log('ips:', ips)
+
+    //   const fetchDomain = () => {
+    //     const localIp = ips.length > 0 ? ips[0] : ''
+    //     const newOptions = targetEnvDefaultOptions.map((item) => {
+    //       if (item.label === 'Local') {
+    //         return { label: 'Local', value: localIp }
+    //       }
+    //       return item
+    //     })
+    //     setTargetEnvOptions(newOptions)
+    //     setTargetEnv('SIT')
+
+    //     onChangeTargetEnv('SIT')
+    //   }
+
+    //   fetchDomain()
+    // })
   }, [onChangeTargetEnv])
+
+  // ipc에서 쿼리 조회
+  useEffect(() => {
+
+
+    ; (async () => {
+      try {
+        const wrapperQueryJson = await window.electronAPI.getJsonData('wrapperQuery')
+
+        if (wrapperQueryJson) {
+          setWrapperQuery(wrapperQueryJson)
+          // console.log(wrapperQueryJson)
+        }
+      }
+      catch (error) {
+        alert(error)
+      }
+    })()
+
+    
+  }, [])
 
   return (
     <div className='flex flex-col  h-full w-full   '>
@@ -272,6 +330,11 @@ const WrapperMain = () => {
           containerClassName='w-[180px] '
         />
         <LabelInput label='Domain' value={targetDomain} onChange={setTargetDomain} containerClassName='text-xs' />
+         {/* <div className='order-17  sm:order-15'> */}
+          <Button className='w-auto text-xs ml-auto' onClick={onClickQueryCopy}>
+            쿼리
+          </Button>
+        {/* </div> */}
       </header>
       <main
         ref={mainLayout}
@@ -414,6 +477,7 @@ const WrapperMain = () => {
             입력 초기화
           </Button>
         </div>
+       
       </main>
       <footer
         className={`min-h-16 items-center justify-center border-t border-gray-200 pb-3`}

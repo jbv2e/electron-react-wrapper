@@ -1,0 +1,6 @@
+{
+  "select" : "SELECT * FROM wrapper",
+  "insert" : "INSERT INTO wrapper (name) VALUES (?)",
+  "update" : "UPDATE wrapper SET name = ? WHERE id = ?",
+  "delete" : "DELETE FROM wrapper WHERE id = ?"
+}

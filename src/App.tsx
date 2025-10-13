@@ -22,14 +22,7 @@ const tabs = [
     name: 'Code',
     value: 'Code',
   },
-  {
-    name: 'Test',
-    value: 'Test',
-  },
-  {
-    name: 'bun',
-    value: 'bun',
-  },
+
 ]
 
 function App() {
