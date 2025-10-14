@@ -53,8 +53,10 @@ let win: BrowserWindow | null
 // })
 
 function createWindow() {
+  // console.log(process.env.VITE_PUBLIC)
   win = new BrowserWindow({
-    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+    // icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+    icon: path.join(process.env.VITE_PUBLIC, 'icon-w.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
       contextIsolation: true,
@@ -84,9 +86,9 @@ function createWindow() {
 
   win.setMenu(null) // Remove menu bar
 
-  win.webContents.openDevTools({
-    mode: 'detach',
-  })
+  // win.webContents.openDevTools({
+  //   mode: 'detach',
+  // })
 }
 
 // Quit when all windows are closed, except on macOS. There, it's common

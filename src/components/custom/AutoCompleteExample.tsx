@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { AutoComplete, AutoCompleteDataItem } from './AutoComplete'
 
 // 샘플 데이터

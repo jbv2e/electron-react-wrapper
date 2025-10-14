@@ -1,6 +1,7 @@
 
+import { app } from 'electron'
 import fs from 'fs/promises'
-import { join } from 'path'
+import { dirname, join } from 'path'
 
 // import os from 'os'
 
@@ -25,15 +26,45 @@ import { join } from 'path'
 // }
 
 
+function resolveDataPaths(filename: string): string[] {
+  const candidates = new Set<string>()
+
+  if (app.isPackaged) {
+    const exeDir = dirname(process.execPath)
+
+    // console.log('process.resourcesPath : ' + process.resourcesPath)
+    // console.log('exeDir : ' + exeDir)
+    candidates.add(join(exeDir, 'data', filename))
+    candidates.add(join(process.resourcesPath, 'data', filename))
+  }
+
+  candidates.add(join(process.cwd(), 'electron', 'data', filename))
+  candidates.add(join(app.getAppPath(), 'electron', 'data', filename))
+
+  return Array.from(candidates)
+}
+
 export async function getJsonData<T>(configName: string): Promise<T> {
-     try {
-       // console.log('root dir2:', process.cwd())
-       // console.log('file path:', join(process.cwd(),'electron', 'data',`${configName}.json`))
-       
-       const data = await fs.readFile(join(process.cwd(),'electron', 'data',`${configName}.json`), 'utf-8')
-       return JSON.parse(data)
-     } catch (error) {
-      //  console.error('File Read Error:', error)
-       throw error 
-     }
+  const fileName = `${configName}.json`
+  const paths = resolveDataPaths(fileName)
+
+  for (const candidate of paths) {
+    try {
+      const data = await fs.readFile(candidate, 'utf-8')
+      return JSON.parse(data)
+    } catch (error: unknown) {
+      if (
+        typeof error === 'object' &&
+        error !== null &&
+        'code' in error &&
+        (error as { code?: string }).code === 'ENOENT'
+      ) {
+        continue
+      }
+
+      throw error
+    }
+  }
+
+  throw new Error(`Unable to locate ${fileName} in paths: ${paths.join(', ')}`)
 }

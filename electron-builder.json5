@@ -1,15 +1,26 @@
 // @see - https://www.electron.build/configuration/configuration
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
-  "appId": "YourAppID",
+  "appId": "electron.wrapper.test",
   "asar": true,
-  "productName": "YourAppName",
+  "compression": "normal",
+  "buildDependenciesFromSource": false,
+  "productName": "WrapperTest",
   "directories": {
     "output": "release/${version}"
   },
   "files": [
     "dist",
     "dist-electron"
+  ],
+  "extraResources": [
+    {
+      "from": "electron/data",
+      "to": "data",
+      "filter": [
+        "**/*.json"
+      ]
+    }
   ],
   "mac": {
     "target": [

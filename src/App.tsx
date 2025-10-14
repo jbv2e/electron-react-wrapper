@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className='bg-background text-foreground p-1 h-screen flex flex-col'>
-      <Tabs defaultValue={tabs[0].value} className='flex w-full h-full bg-white  '>
+      <Tabs defaultValue={tabs[0].value} className='flex w-full h-full bg-white  ' >
         <TabsList className='p-0 h-auto  gap-1  bg-white border-b border-gray-200 '>
           {tabs.map((tab) => (
             <TabsTrigger
@@ -46,18 +46,18 @@ function App() {
             </TabsTrigger>
           ))}
         </TabsList>
-        <TabsContent value='wrapper' className='flex h-auto '>
+        <TabsContent value='wrapper' className='flex h-auto border-t'>
           {/* <Profiler id='wrapper' onRender={onRenderCallback}> */}
           <WrapperMain></WrapperMain>
           {/* </Profiler> */}
         </TabsContent>
-        <TabsContent value='Code' asChild>
+        <TabsContent value='Code' className='border-t' asChild>
           <div>
             <CodeSearch></CodeSearch>
             </div>
         </TabsContent>
-        <TabsContent value='Test' asChild>
-          <div className='flex flex-col border-b '>
+        <TabsContent value='Test' className=' ' asChild>
+          <div className='flex flex-col '>
             <SubPageTest className=' '></SubPageTest>
           </div>
         </TabsContent>

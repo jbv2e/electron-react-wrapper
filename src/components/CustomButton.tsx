@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, FC } from 'react'
 
 import { cva, VariantProps } from 'class-variance-authority'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/utils'
 
 export const CustomButtonVariants = cva(
   `
