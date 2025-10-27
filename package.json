@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "node -e \"const p=process.env.npm_execpath||''; if(p.includes('yarn')||p.includes('pnpm')) throw new Error('❌ Use npm only');\"",
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
     "build:portable": "tsc && vite build && electron-builder --win zip",

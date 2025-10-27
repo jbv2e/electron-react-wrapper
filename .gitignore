@@ -28,3 +28,6 @@ dist-ssr
 # electron 
 release
 build
+
+offline-cache/*
+offline*

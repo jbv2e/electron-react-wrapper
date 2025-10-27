@@ -7,7 +7,7 @@ declare global {
       getLocalIPs: () => Promise<string>
       // getAllInterfaces: () => Promise<any[]>
       callSoapService: (data: unknown) => Promise<{ NumberToWordsResult: string }>
-      getJsonData: (configName: string) => Promise<JSON>
+      getJsonData: <T = unknown>(configName: string) => Promise<T>
       getDomains: () => Promise<Record<string, string>>
     },
     // ipcRenderer: {
